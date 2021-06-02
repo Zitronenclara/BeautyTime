@@ -1,2 +1,2 @@
 # BeautyTime
-BeautyTime is a universal timespan format and time calculating utility
+BeautyTime is a universal timespan formatting and time calculating utility for JS, nodeJS and TypeScript.
