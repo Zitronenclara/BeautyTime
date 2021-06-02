@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "BeautyTime is a universal timespan format and time calculating utility",
   "main": "BeautyTime.js",
+  "types": "types/BeautyTime.d.ts",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "dts": "tsc BeautyTime.js --declaration --allowJs --emitDeclarationOnly --outDir types"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/Zitronenclara/BeautyTime/issues"
   },
-  "homepage": "https://github.com/Zitronenclara/BeautyTime#readme"
+  "homepage": "https://github.com/Zitronenclara/BeautyTime#readme",
+  "keywords": [
+    "nodejs",
+    "js",
+    "time",
+    "date",
+    "formatting",
+    "beauty",
+    "beautify",
+    "timespan",
+    "zitronenclara"
+  ]
 }
