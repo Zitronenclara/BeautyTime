@@ -78,7 +78,8 @@ class BeautyTime {
  * @return {number} total amount of milliseconds
  */
 function calcTotalMilliseconds (mil = 0, s = 0, min = 0, h = 0, d = 0){
-    return mil+(s*fac.s)+(min*fac.m)+(h*fac.h)+(d*fac.d)
+    let total = mil+(s*fac.s)+(min*fac.m)+(h*fac.h)+(d*fac.d)
+    return (total < 0 ? total *= -1 : total)
 }
 
 // checks if launched via nodeJS
