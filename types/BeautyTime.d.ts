@@ -8,6 +8,21 @@ export = BeautyTime;
  */
 declare class BeautyTime {
     /**
+     * Creates an instace of BeautyTime from the current date
+     *
+     * @since 1.0.0
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+    static fromDateNow(): BeautyTime;
+    /**
+     * Creates an instace of BeautyTime from the given date
+     *
+     * @since 1.0.0
+     * @param {Date} date The date
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+    static fromDate(date: Date): BeautyTime;
+    /**
      * Creates an instace of BeautyTime
      *
      * @since 1.0.0

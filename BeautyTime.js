@@ -41,6 +41,30 @@ class BeautyTime {
          */
         this.time = calcTotalMilliseconds(milliseconds, seconds, minutes, hours, days)
     }
+
+    /**
+     * Creates an instace of BeautyTime from the current date
+     *
+     * @since 1.0.0
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+    static fromDateNow(){
+        return new this(Date.now())
+    }
+
+    /**
+     * Creates an instace of BeautyTime from the given date
+     *
+     * @since 1.0.0
+     * @param {Date} date The date
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+     static fromDate(date){
+         if (!(date instanceof Date)){
+             throw new Error("The given argument is not a date.")
+         }
+         return new this(+ date)
+     }
 }
 
 /**
