@@ -1,0 +1,19 @@
+{
+  "name": "beautytime",
+  "version": "1.0.0",
+  "description": "BeautyTime is a universal timespan format and time calculating utility",
+  "main": "BeautyTime.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zitronenclara/BeautyTime.git"
+  },
+  "author": "Clara Hertel",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Zitronenclara/BeautyTime/issues"
+  },
+  "homepage": "https://github.com/Zitronenclara/BeautyTime#readme"
+}
