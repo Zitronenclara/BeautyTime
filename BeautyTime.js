@@ -53,6 +53,7 @@ class BeautyTime {
         this.originalTime = this.time
     }
 
+    // CREATE FROM STATICS
     /**
      * Creates an instace of BeautyTime from the current date
      *
@@ -107,6 +108,7 @@ class BeautyTime {
         return (+date1 > +date2 ? new this(+date1 - +date2) : new this(+date2 - +date1))
     }    
 
+    // ADD SPECIFIC TIME UNITES
     /**
      * Adds a BeautyTime instance to the current instance
      *
@@ -197,6 +199,7 @@ class BeautyTime {
         return this
     }
 
+    // REMOVE SPECIFIC TIME UNITS
     /**
      * Removes a specified amount of milliseconds from the instance
      *
@@ -255,6 +258,57 @@ class BeautyTime {
      removeDays(days){
         this.time -= days*fac.d
         return this
+    }
+
+    // GET TOTAL TIME UNITS
+    /**
+     * Returns the total time length of this instance in milliseconds
+     *
+     * @since 1.0.0
+     * @returns {number} milliseconds
+     */
+     getTotalMilliseconds(){
+        return this.time
+    }
+
+    /**
+     * Returns the total time length of this instance in seconds
+     *
+     * @since 1.0.0
+     * @returns {number} seconds
+     */
+     getTotalSeconds(){
+        return this.time/fac.s
+    }
+
+    /**
+     * Returns the total time length of this instance in minutes
+     *
+     * @since 1.0.0
+     * @returns {number} minutes
+     */
+     getTotalMinutes(){
+        return this.time/fac.m
+    }
+
+    /**
+     * Returns the total time length of this instance in hours
+     *
+     * @since 1.0.0
+     * @returns {number} hours
+     */
+     getTotalHours(){
+        return this.time/fac.h
+    }
+
+    /**
+     * Returns the total time length of this instance in days
+     *
+     * @since 1.0.0
+     * @returns {number} days
+     */
+     getTotalDays(){
+        return this.time/fac.d
     }
 }
 
