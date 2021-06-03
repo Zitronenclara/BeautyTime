@@ -42,6 +42,15 @@ class BeautyTime {
          * @public
          */
         this.time = calcTotalMilliseconds(milliseconds, seconds, minutes, hours, days)
+        
+        /**
+         * originalTime is the amount of time this instance was created with
+         * 
+         * @since 1.0.0
+         * @type {number}
+         * @public
+         */
+        this.originalTime = this.time
     }
 
     /**
@@ -50,7 +59,7 @@ class BeautyTime {
      * @since 1.0.0
      * @returns {BeautyTime} An instance of BeautyTime
      */
-    static fromDateNow(){
+     static fromDateNow(){
         return new this(Date.now())
     }
 
@@ -61,7 +70,7 @@ class BeautyTime {
      * @param {Date} date The date
      * @returns {BeautyTime} An instance of BeautyTime
      */
-    static fromDate(date){
+     static fromDate(date){
          if (!(date instanceof Date)){
              throw new Error("The given argument is not a date.")
          }
@@ -72,41 +81,165 @@ class BeautyTime {
      * Creates an instace of BeautyTime from the time difference of the given dates
      *
      * @since 1.0.0
-     * @param {Date} da A date
-     * @param {Date} db A date
+     * @param {Date} date1 A date
+     * @param {Date} date2 A date
      * @returns {BeautyTime} An instance of BeautyTime
      */
-     static fromDates(da, db){
-        if (!(da instanceof Date) || !(db instanceof Date)){
+     static fromDates(date1, date2){
+        if (!(date1 instanceof Date) || !(date2 instanceof Date)){
             throw new Error("The given arguments have to be dates.")
         }
-        return (+da > +db ? new this(+da - +db) : new this(+db - +da))
-   }    
+        return (+date1 > +date2 ? new this(+date1 - +date2) : new this(+date2 - +date1))
+    }    
 
     /**
      * Adds a BeautyTime instance to the current instance
      *
      * @since 1.0.0
-     * @param {BeautyTime} bt The BeautyTime instance that is supposed to be added
+     * @param {BeautyTime} beautytime The BeautyTime instance that is supposed to be added
+     * @returns {BeautyTime} The current BeautyTime instance
      */
-    add(bt){
-        if (!(bt instanceof BeautyTime)){
+     add(beautytime){
+        if (!(beautytime instanceof BeautyTime)){
             throw new Error("The given argument is not a instance of BeautyTime.")
         }
-        this.time += bt.time
+        this.time += beautytime.time
+        return this
     }
 
     /**
      * Removes a BeautyTime instance from the current instance
      *
      * @since 1.0.0
-     * @param {BeautyTime} bt The BeautyTime instance that is supposed to be removed
+     * @param {BeautyTime} beautytime The BeautyTime instance that is supposed to be removed
+     * @returns {BeautyTime} The current BeautyTime instance
      */
-     remove(bt){
-        if (!(bt instanceof BeautyTime)){
+     remove(beautytime){
+        if (!(beautytime instanceof BeautyTime)){
             throw new Error("The given argument is not a instance of BeautyTime.")
         }
-        this.time -= bt.time
+        this.time -= beautytime.time
+        return this
+    }
+
+    /**
+     * Adds a specified amount of milliseconds to the instance
+     *
+     * @since 1.0.0
+     * @param {number} milliseconds The amount of milliseconds that is supposed to be added
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     addMilliseconds(milliseconds){
+        this.time += milliseconds
+        return this
+    }
+
+    /**
+     * Adds a specified amount of seconds to the instance
+     *
+     * @since 1.0.0
+     * @param {number} seconds The amount of seconds that is supposed to be added
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     addSeconds(seconds){
+        this.time += seconds*fac.s
+        return this
+    }
+
+    /**
+     * Adds a specified amount of minutes to the instance
+     *
+     * @since 1.0.0
+     * @param {number} minutes The amount of minutes that is supposed to be added
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     addMinutes(minutes){
+        this.time += minutes*fac.m
+        return this
+    }
+
+    /**
+     * Adds a specified amount of hours to the instance
+     *
+     * @since 1.0.0
+     * @param {number} hours The amount of hours that is supposed to be added
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     addHours(hours){
+        this.time += hours*fac.h
+        return this
+    }
+
+    /**
+     * Adds a specified amount of days to the instance
+     *
+     * @since 1.0.0
+     * @param {number} days The amount of days that is supposed to be added
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     addDays(days){
+        this.time += days*fac.d
+        return this
+    }
+
+    /**
+     * Removes a specified amount of milliseconds from the instance
+     *
+     * @since 1.0.0
+     * @param {number} milliseconds The amount of milliseconds that is supposed to be removed
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     removeMilliseconds(milliseconds){
+        this.time -= milliseconds
+        return this
+    }
+
+    /**
+     * Removes a specified amount of seconds from the instance
+     *
+     * @since 1.0.0
+     * @param {number} seconds The amount of seconds that is supposed to be removed
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     removeSeconds(seconds){
+        this.time -= seconds*fac.s
+        return this
+    }
+
+    /**
+     * Removes a specified amount of minutes from the instance
+     *
+     * @since 1.0.0
+     * @param {number} minutes The amount of minutes that is supposed to be removed
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     removeMinutes(minutes){
+        this.time -= minutes*fac.m
+        return this
+    }
+
+    /**
+     * Removes a specified amount of hours from the instance
+     *
+     * @since 1.0.0
+     * @param {number} hours The amount of hours that is supposed to be removed
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     removeHours(hours){
+        this.time -= hours*fac.h
+        return this
+    }
+
+    /**
+     * Removes a specified amount of days from the instance
+     *
+     * @since 1.0.0
+     * @param {number} days The amount of days that is supposed to be removed
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     removeDays(days){
+        this.time -= days*fac.d
+        return this
     }
 }
 
