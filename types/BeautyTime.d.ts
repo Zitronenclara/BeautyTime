@@ -1,6 +1,6 @@
 export = BeautyTime;
 /**
- * BeautyTime is a universal timespan format and time calculating utility
+ * BeautyTime is a universal timespan formatting and time calculating utility
  *
  * @class
  * @constructor
@@ -23,6 +23,15 @@ declare class BeautyTime {
      */
     static fromDate(date: Date): BeautyTime;
     /**
+     * Creates an instace of BeautyTime from the time difference of the given dates
+     *
+     * @since 1.0.0
+     * @param {Date} da A date
+     * @param {Date} db A date
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+    static fromDates(da: Date, db: Date): BeautyTime;
+    /**
      * Creates an instace of BeautyTime
      *
      * @since 1.0.0
@@ -36,10 +45,25 @@ declare class BeautyTime {
     /**
      * time is the length of the timespan in milliseconds
      *
+     * @since 1.0.0
      * @type {number}
      * @public
      */
     public time: number;
+    /**
+     * Adds a BeautyTime instance to the current instance
+     *
+     * @since 1.0.0
+     * @param {BeautyTime} bt The BeautyTime instance that is supposed to be added
+     */
+    add(bt: BeautyTime): void;
+    /**
+     * Removes a BeautyTime instance from the current instance
+     *
+     * @since 1.0.0
+     * @param {BeautyTime} bt The BeautyTime instance that is supposed to be removed
+     */
+    remove(bt: BeautyTime): void;
 }
 declare namespace BeautyTime {
     export { fac };

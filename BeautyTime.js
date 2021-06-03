@@ -1,6 +1,7 @@
 /**
  * The calculation factors for the different time units
  * 
+ * @since 1.0.0
  * @typedef {Object} fac
  * @property {number} s factor of milliseconds to seconds
  * @property {number} m factor of milliseconds to minutes
@@ -15,7 +16,7 @@ const fac = {
 }
 
 /**
- * BeautyTime is a universal timespan format and time calculating utility
+ * BeautyTime is a universal timespan formatting and time calculating utility
  * 
  * @class
  * @constructor
@@ -36,6 +37,7 @@ class BeautyTime {
         /**
          * time is the length of the timespan in milliseconds
          * 
+         * @since 1.0.0
          * @type {number}
          * @public
          */
@@ -59,17 +61,59 @@ class BeautyTime {
      * @param {Date} date The date
      * @returns {BeautyTime} An instance of BeautyTime
      */
-     static fromDate(date){
+    static fromDate(date){
          if (!(date instanceof Date)){
              throw new Error("The given argument is not a date.")
          }
          return new this(+ date)
-     }
+    }
+
+    /**
+     * Creates an instace of BeautyTime from the time difference of the given dates
+     *
+     * @since 1.0.0
+     * @param {Date} da A date
+     * @param {Date} db A date
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+     static fromDates(da, db){
+        if (!(da instanceof Date) || !(db instanceof Date)){
+            throw new Error("The given arguments have to be dates.")
+        }
+        return (+da > +db ? new this(+da - +db) : new this(+db - +da))
+   }    
+
+    /**
+     * Adds a BeautyTime instance to the current instance
+     *
+     * @since 1.0.0
+     * @param {BeautyTime} bt The BeautyTime instance that is supposed to be added
+     */
+    add(bt){
+        if (!(bt instanceof BeautyTime)){
+            throw new Error("The given argument is not a instance of BeautyTime.")
+        }
+        this.time += bt.time
+    }
+
+    /**
+     * Removes a BeautyTime instance from the current instance
+     *
+     * @since 1.0.0
+     * @param {BeautyTime} bt The BeautyTime instance that is supposed to be removed
+     */
+     remove(bt){
+        if (!(bt instanceof BeautyTime)){
+            throw new Error("The given argument is not a instance of BeautyTime.")
+        }
+        this.time -= bt.time
+    }
 }
 
 /**
  * Calculates the total amount of milliseconds from the given time units
  *
+ * @since 1.0.0
  * @param {number} mil timespan milliseconds
  * @param {number} s timespan seconds
  * @param {number} min timespan minutes
