@@ -162,6 +162,41 @@ declare class BeautyTime {
      * @returns {BeautyTime} The current BeautyTime instance
      */
     removeDays(days: number): BeautyTime;
+    /**
+     * Returns the total time length of this instance in milliseconds
+     *
+     * @since 1.0.0
+     * @returns {number} milliseconds
+     */
+    getTotalMilliseconds(): number;
+    /**
+     * Returns the total time length of this instance in seconds
+     *
+     * @since 1.0.0
+     * @returns {number} seconds
+     */
+    getTotalSeconds(): number;
+    /**
+     * Returns the total time length of this instance in minutes
+     *
+     * @since 1.0.0
+     * @returns {number} minutes
+     */
+    getTotalMinutes(): number;
+    /**
+     * Returns the total time length of this instance in hours
+     *
+     * @since 1.0.0
+     * @returns {number} hours
+     */
+    getTotalHours(): number;
+    /**
+     * Returns the total time length of this instance in days
+     *
+     * @since 1.0.0
+     * @returns {number} days
+     */
+    getTotalDays(): number;
 }
 declare namespace BeautyTime {
     export { fac };
