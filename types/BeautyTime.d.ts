@@ -15,6 +15,14 @@ declare class BeautyTime {
      */
     static fromDateNow(): BeautyTime;
     /**
+     * Creates an instace of BeautyTime from the difference of the current and specified date
+     *
+     * @since 1.0.0
+     * @param {Date} date The date
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+    static fromDateNowDifference(date: Date): BeautyTime;
+    /**
      * Creates an instace of BeautyTime from the given date
      *
      * @since 1.0.0

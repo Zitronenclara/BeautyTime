@@ -64,6 +64,21 @@ class BeautyTime {
     }
 
     /**
+     * Creates an instace of BeautyTime from the difference of the current and specified date
+     *
+     * @since 1.0.0
+     * @param {Date} date The date
+     * @returns {BeautyTime} An instance of BeautyTime
+     */
+     static fromDateNowDifference(date){
+        if (!(date instanceof Date)){
+            throw new Error("The given argument is not a date.")
+        }
+        let now = + new Date()
+        return (+date > +now ? new this(+date - +now) : new this(+now - +date))
+    }
+
+    /**
      * Creates an instace of BeautyTime from the given date
      *
      * @since 1.0.0
