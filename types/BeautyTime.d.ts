@@ -48,8 +48,9 @@ declare class BeautyTime {
      * @param {number} minutes The amount of minutes
      * @param {number} hours The amount of hours
      * @param {number} days The amount of days
+     * @param {number} years The amount of years
      */
-    constructor(milliseconds?: number, seconds?: number, minutes?: number, hours?: number, days?: number);
+    constructor(milliseconds?: number, seconds?: number, minutes?: number, hours?: number, days?: number, years?: number);
     /**
      * time is the length of the timespan in milliseconds
      *
@@ -197,6 +198,13 @@ declare class BeautyTime {
      * @returns {number} days
      */
     getTotalDays(): number;
+    /**
+     * Returns the total time length of this instance in years
+     *
+     * @since 1.0.0
+     * @returns {number} years
+     */
+    getTotalYears(): number;
 }
 declare namespace BeautyTime {
     export { fac };
@@ -221,4 +229,8 @@ type fac = {
      * factor of milliseconds to days
      */
     d: number;
+    /**
+     * factor of milliseconds to years
+     */
+    y: number;
 };

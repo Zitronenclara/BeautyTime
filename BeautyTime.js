@@ -7,12 +7,14 @@
  * @property {number} m factor of milliseconds to minutes
  * @property {number} h factor of milliseconds to hours
  * @property {number} d factor of milliseconds to days
+ * @property {number} y factor of milliseconds to years
  */
 const fac = {
     s: 1000,
     m: 60000,
     h: 3600000,
-    d: 86400000
+    d: 86400000,
+    y: 31557600000
 }
 
 /**
@@ -32,8 +34,9 @@ class BeautyTime {
      * @param {number} minutes The amount of minutes
      * @param {number} hours The amount of hours
      * @param {number} days The amount of days
+     * @param {number} years The amount of years
      */
-    constructor(milliseconds = 0, seconds = 0, minutes = 0, hours = 0, days = 0){
+    constructor(milliseconds = 0, seconds = 0, minutes = 0, hours = 0, days = 0, years = 0){
         /**
          * time is the length of the timespan in milliseconds
          * 
@@ -41,7 +44,7 @@ class BeautyTime {
          * @type {number}
          * @public
          */
-        this.time = calcTotalMilliseconds(milliseconds, seconds, minutes, hours, days)
+        this.time = calcTotalMilliseconds(milliseconds, seconds, minutes, hours, days, years)
         
         /**
          * originalTime is the amount of time this instance was created with
@@ -199,6 +202,18 @@ class BeautyTime {
         return this
     }
 
+    /**
+     * Adds a specified amount of years to the instance
+     *
+     * @since 1.0.0
+     * @param {number} years The amount of years that is supposed to be added
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     addDays(years){
+        this.time += years*fac.d
+        return this
+    }
+
     // REMOVE SPECIFIC TIME UNITS
     /**
      * Removes a specified amount of milliseconds from the instance
@@ -260,6 +275,18 @@ class BeautyTime {
         return this
     }
 
+    /**
+     * Removes a specified amount of years from the instance
+     *
+     * @since 1.0.0
+     * @param {number} years The amount of years that is supposed to be removed
+     * @returns {BeautyTime} The current BeautyTime instance
+     */
+     removeDays(years){
+        this.time -= years*fac.y
+        return this
+    }
+
     // GET TOTAL TIME UNITS
     /**
      * Returns the total time length of this instance in milliseconds
@@ -310,6 +337,16 @@ class BeautyTime {
      getTotalDays(){
         return this.time/fac.d
     }
+
+    /**
+     * Returns the total time length of this instance in years
+     *
+     * @since 1.0.0
+     * @returns {number} years
+     */
+     getTotalYears(){
+        return this.time/fac.y
+    }
 }
 
 /**
@@ -321,10 +358,11 @@ class BeautyTime {
  * @param {number} min timespan minutes
  * @param {number} h timespan hours
  * @param {number} d timespan days
+ * @param {number} y timespan years
  * @return {number} total amount of milliseconds
  */
-function calcTotalMilliseconds (mil = 0, s = 0, min = 0, h = 0, d = 0){
-    let total = mil+(s*fac.s)+(min*fac.m)+(h*fac.h)+(d*fac.d)
+function calcTotalMilliseconds (mil = 0, s = 0, min = 0, h = 0, d = 0, y = 0){
+    let total = mil+(s*fac.s)+(min*fac.m)+(h*fac.h)+(d*fac.d)+(y*fac.y)
     return (total < 0 ? total *= -1 : total)
 }
 
